@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Implementation-Title: flower of hope
+Implementation-Version: 1.0.0-SNAPSHOT
+Built-By: MengDaNai
+Implementation-Vendor-Id: com.mdn.springboot
+Build-Jdk: 1.8.0_151
+Implementation-URL: http://
+Created-By: Maven Integration for Eclipse
+

@@ -1,0 +1,112 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<!-- parent指明继承关系，给出被继承的父项目的具体信息继承说明：这里继承SpringBoot提供的父工程 -->
+	<parent>
+		<!-- 被继承的父项目的全球唯一标识符 -->
+		<groupId>org.springframework.boot</groupId>
+		<!-- 被继承的父项目的构件标识符 -->
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<!-- 被继承的父项目的版本 -->
+		<version>2.0.6.RELEASE</version>
+		<!-- 父项目的pom.xml文件的相对路径。相对路径允许你选择一个不同的路径。默认值是../pom.xml。 Maven首先在构建当前项目的地方寻找父项目的pom，其次在文件系统的这个位置（relativePath位置）， 
+			然后在本地仓库，最后在远程仓库寻找父项目的pom。 -->
+		<relativePath /> <!-- lookup parent from repository -->
+	</parent>
+
+	<!-- 项目的全球唯一标识符，通常使用全限定的包名区分该项目和其他项目。并且构建时生成的路径也是由此生成， 如com.mycompany.app生成的相对路径为：/com/mycompany/app -->
+	<groupId>com.sch.springboot</groupId>
+	<!-- 构件的标识符，它和group ID一起唯一标识一个构件。换句话说，你不能有两个不同的项目拥有同样的artifact ID 和groupID；在某个特定的group 
+		ID下，artifact ID也必须是唯一的。构件是项目产生的或使用的一个东西，Maven 为项目产生的构件包括：JARs，源码，二进制发布和WARs等。 -->
+	<artifactId>mdn-springboot</artifactId>
+	<!-- 项目产生的构件类型，例如jar、war、ear、pom。插件可以创建他们自己的构件类型，所以前面列的不是全部构件类型 -->
+	<packaging>jar</packaging>
+	<!-- 项目当前版本，格式为:主版本.次版本.增量版本-限定版本号 -->
+	<version>1.0.0-SNAPSHOT</version>
+	<!-- 项目的名称, Maven产生的文档用 -->
+	<name>poipoi</name>
+	<!-- 项目主页的URL, Maven产生的文档用 -->
+	<url>http://</url>
+	<!-- 项目的详细描述, Maven 产生的文档用。 当这个元素能够用HTML格式描述时（例如，CDATA中的文本会被解析器忽略， 就可以包含HTML标签）， 
+		不鼓励使用纯文本描述。如果你需要修改产生的web站点的索引页面，你应该修改你自己的 索引页文件，而不是调整这里的文档。 -->
+	<description>poipoi By:sch</description>
+
+	<!-- 集中定义依赖版本号 -->
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+		<springfox-swagger.version>2.9.2</springfox-swagger.version>
+		<ehcache-core.version>2.6.11</ehcache-core.version>
+		<core.version>3.3.0</core.version>
+		<aliyun-java-sdk-core.version>3.0.0</aliyun-java-sdk-core.version>
+		<aliyun-java-sdk-dm.version>3.1.0</aliyun-java-sdk-dm.version>
+	</properties>
+
+	<dependencies>
+		<!-- spring boot web -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<!-- spring boot jdbc -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
+		<!-- Spring boot jpa -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<!-- mysql驱动 -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<!-- 依赖范围。在项目发布过程中，帮助决定哪些构件被包括进来。欲知详情请参考依赖机制。 - compile ：默认范围，用于编译 - provided：类似于编译，但支持你期待jdk或者容器提供，类似于classpath
+				- runtime: 在执行时需要使用 - test: 用于test任务时使用 - system: 需要外在提供相应的元素。通过systemPath来取得
+				- systemPath: 仅用于范围为system。提供相应的路径 - optional: 当项目自身被依赖时，标注依赖是否传递。用于连续依赖时使用 -->
+			<scope>runtime</scope>
+		</dependency>
+		<!-- 日志工具类 -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
+		<!-- spring boot test -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!-- fastjson -->
+		<!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.47</version>
+		</dependency>
+		<!-- junit -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+		</dependency>
+	</dependencies>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
